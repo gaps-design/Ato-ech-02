@@ -5,7 +5,7 @@ function closeModal(){document.getElementById('modal')?.classList.remove('open')
 function imageModal(src){openModal(`<img class="responsive" src="${src}">`)}
 function anomalyCard(a){
  const imgs=a.img.map(x=>`<img src="assets/img/${x}" onclick="imageModal(this.src)">`).join('');
- return `<article class="card anomaly"><span class="badge ${a.iv==='AutoFlush'?'amber':'red'}">${a.iv}</span><h3>${a.id}. ${a.title}</h3>
+ return `<article class="card anomaly"><span class="badge ${a.iv==='Autoflush'?'amber':'red'}">${a.iv}</span><h3>${a.id}. ${a.title}</h3>
  <p><b>Subconjunto:</b> ${a.sub}<br><b>Componente:</b> ${a.comp}</p>
  <p><b>Impacto principal:</b> ${a.impact}</p>
  ${a.secondaryImpact?`<p class="secondary-impact"><b>Impacto secundário:</b> ${a.secondaryImpact}</p>`:''}
