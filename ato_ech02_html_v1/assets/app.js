@@ -48,4 +48,33 @@ function addProcedure(){
  items.push(item);localStorage.setItem(USER_PROCEDURES_KEY,JSON.stringify(items));
  document.getElementById('saved-procedures')?.append(createProcedureCard(item));form.reset()
 }
-document.addEventListener('DOMContentLoaded',()=>{setActive();document.querySelectorAll('.gallery img').forEach(i=>i.onclick=()=>imageModal(i.src));document.getElementById('modal')?.addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});loadSavedProcedures()})
+const MAPA_CONTAMINACAO_KEY='ato-mapa-contaminacao-v1';
+function updateContaminationStatus(select){
+ if(!select)return;
+ const classes={'OK':'status-ok','Em andamento':'status-progress','Pendente':'status-pending','Validar':'status-validate'};
+ select.classList.remove('status-ok','status-progress','status-pending','status-validate');
+ select.classList.add(classes[select.value]||'status-validate')
+}
+function saveContaminationMap(){
+ const rows=[...document.querySelectorAll('#contamination-action-table tbody tr')];if(!rows.length)return;
+ const data=rows.map(row=>({
+  number:Number(row.dataset.number),
+  action:row.querySelector('[data-field="action"]')?.innerText.trim()||'',
+  contamination:row.querySelector('[data-field="contamination"]')?.innerText.trim()||'',
+  status:row.querySelector('[data-field="status"]')?.value||'Validar',
+  comment:row.querySelector('[data-field="comment"]')?.innerText.trim()||''
+ }));
+ localStorage.setItem(MAPA_CONTAMINACAO_KEY,JSON.stringify(data));
+ const feedback=document.getElementById('contamination-save-feedback');if(feedback){feedback.hidden=false;clearTimeout(window.contaminationFeedbackTimer);window.contaminationFeedbackTimer=setTimeout(()=>{feedback.hidden=true},4000)}
+}
+function loadContaminationMap(){
+ const table=document.getElementById('contamination-action-table');if(!table)return;
+ let saved=[];try{saved=JSON.parse(localStorage.getItem(MAPA_CONTAMINACAO_KEY)||'[]')}catch(e){}
+ if(Array.isArray(saved))saved.forEach(item=>{
+  const row=table.querySelector(`tr[data-number="${Number(item.number)}"]`);if(!row)return;
+  ['action','contamination','comment'].forEach(field=>{if(typeof item[field]==='string')row.querySelector(`[data-field="${field}"]`).textContent=item[field]});
+  const select=row.querySelector('[data-field="status"]');if(select&&[...select.options].some(option=>option.value===item.status))select.value=item.status
+ });
+ table.querySelectorAll('.status-select').forEach(select=>{updateContaminationStatus(select);select.addEventListener('change',()=>updateContaminationStatus(select))})
+}
+document.addEventListener('DOMContentLoaded',()=>{setActive();document.querySelectorAll('.gallery img').forEach(i=>i.onclick=()=>imageModal(i.src));document.getElementById('modal')?.addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});loadSavedProcedures();loadContaminationMap()})

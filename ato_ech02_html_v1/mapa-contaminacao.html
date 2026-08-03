@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mapa de Contaminação | ATO ECH 02 – AUDITORIA</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header>
+  <div class="top"><div class="brand">ATO ECH 02 – AUDITORIA<small>Linha 504 • Q1 • Relatório técnico interativo</small></div><span class="badge amber">Out/2025–Dez/2025</span></div>
+  <nav><a href="index.html">Visão geral</a><a href="time.html">Time da enchedora</a><a href="motivo.html">Motivo da escolha</a><a href="analise.html">Análise estruturada</a><a href="mapa.html">Mapa interativo</a><a href="mapa-contaminacao.html">Mapa de Contaminação</a><a href="cronograma.html">Cronograma</a><a href="objetivo.html">Objetivo</a><a href="eficiencia.html">Eficiência semanal</a><a href="backlog-geral.html">Backlog Geral</a><a href="backlog.html">Backlog Direcionado</a><a href="cinco-porques.html">5 Porquês</a><a href="dia-d.html">Dia D e evidências</a><a href="acoes.html">Plano de ações</a><a href="revisao-planos.html">Revisão dos Planos de Manutenção</a><a href="aprendizados.html">Aprendizados</a></nav>
+</header>
+<main>
+  <div class="section-title">
+    <div class="eyebrow">Diagnóstico visual</div>
+    <h1>Mapa de Contaminação</h1>
+    <p>O Mapa de Contaminação apresenta os principais pontos de entrada e ocorrência de contaminantes na Enchedora 02, permitindo direcionar ações para redução de quebras, presença de água, rolhas e graxa no equipamento.</p>
+  </div>
+
+  <section class="card contamination-map-card" aria-labelledby="mapa-visual-title">
+    <h2 id="mapa-visual-title">Mapa da Enchedora 02</h2>
+    <button class="contamination-map-button" type="button" onclick="imageModal(this.querySelector('img').src)" aria-label="Ampliar o Mapa de Contaminação">
+      <img src="assets/imagens/mapa-contaminacao.png" alt="Mapa da Enchedora 02 com os pontos de ocorrência de água, garrafas e rolhas">
+    </button>
+    <p class="caption">Clique na imagem para ampliar.</p>
+    <div class="map-legend" aria-label="Legenda do Mapa de Contaminação">
+      <span><i class="contaminant-symbol water" aria-hidden="true">●</i> Água</span>
+      <span><i class="contaminant-symbol bottle" aria-hidden="true"></i> Garrafa</span>
+      <span><i class="contaminant-symbol cork" aria-hidden="true">●</i> Rolha</span>
+    </div>
+  </section>
+
+  <section class="contamination-plan" aria-labelledby="plano-contaminacao-title">
+    <div class="section-title">
+      <div class="eyebrow">Tratamento dos pontos identificados</div>
+      <h2 id="plano-contaminacao-title">Plano de Ação do Mapa de Contaminação</h2>
+      <p>Edite os campos necessários e salve as alterações neste navegador.</p>
+    </div>
+    <div class="card table-wrap">
+      <table class="table contamination-table" id="contamination-action-table" aria-label="Plano de ação do Mapa de Contaminação">
+        <thead><tr><th>Nº</th><th>Ação</th><th>Contaminação</th><th>Status</th><th>Comentário</th></tr></thead>
+        <tbody>
+          <tr data-number="1"><td>1</td><td class="editable" contenteditable="true" data-field="action">Troca do rolamento central/cremalheira</td><td class="editable" contenteditable="true" data-field="contamination">Quebra de garrafas</td><td><select class="status-select" data-field="status" aria-label="Status da ação 1"><option selected>OK</option><option>Em andamento</option><option>Pendente</option><option>Validar</option></select></td><td class="editable" contenteditable="true" data-field="comment">Eliminou as folgas nas estrelas de entrada e saída da cúpula.</td></tr>
+          <tr data-number="2"><td>2</td><td class="editable" contenteditable="true" data-field="action">Revisão e V0 dos planos do arrolhador</td><td class="editable" contenteditable="true" data-field="contamination">Quebra de garrafas</td><td><select class="status-select" data-field="status" aria-label="Status da ação 2"><option selected>OK</option><option>Em andamento</option><option>Pendente</option><option>Validar</option></select></td><td class="editable" contenteditable="true" data-field="comment">Eliminou as folgas e o desalinhamento das garrafas ao serem arrolhadas.</td></tr>
+          <tr data-number="3"><td>3</td><td class="editable" contenteditable="true" data-field="action">Revisão do redutor classificador de rolhas</td><td class="editable" contenteditable="true" data-field="contamination">Rolha</td><td><select class="status-select" data-field="status" aria-label="Status da ação 3"><option selected>OK</option><option>Em andamento</option><option>Pendente</option><option>Validar</option></select></td><td class="editable" contenteditable="true" data-field="comment">Melhorou a eficiência do envio de rolhas para os guias.</td></tr>
+          <tr data-number="4"><td>4</td><td class="editable" contenteditable="true" data-field="action">Troca da chapa de transferência de rolhas</td><td class="editable" contenteditable="true" data-field="contamination">Rolha</td><td><select class="status-select" data-field="status" aria-label="Status da ação 4"><option selected>OK</option><option>Em andamento</option><option>Pendente</option><option>Validar</option></select></td><td class="editable" contenteditable="true" data-field="comment">A chapa chegou, porém ainda faltam os guias e ímãs.</td></tr>
+          <tr data-number="5"><td>5</td><td class="editable" contenteditable="true" data-field="action">Instalado inversor no motor TRP de rolhas</td><td class="editable" contenteditable="true" data-field="contamination">Rolha</td><td><select class="status-select" data-field="status" aria-label="Status da ação 5"><option selected>OK</option><option>Em andamento</option><option>Pendente</option><option>Validar</option></select></td><td class="editable" contenteditable="true" data-field="comment">Controlamos a quantidade de rolhas enviada ao classificador, evitando travamentos.</td></tr>
+          <tr data-number="6"><td>6</td><td class="editable" contenteditable="true" data-field="action">Confecção da engrenagem do encoder (Labs)</td><td class="editable" contenteditable="true" data-field="contamination">Rolha</td><td><select class="status-select" data-field="status" aria-label="Status da ação 6"><option selected>OK</option><option>Em andamento</option><option>Pendente</option><option>Validar</option></select></td><td class="editable" contenteditable="true" data-field="comment"></td></tr>
+          <tr data-number="7"><td>7</td><td class="editable" contenteditable="true" data-field="action">Intertravamento HDE</td><td class="editable" contenteditable="true" data-field="contamination">Água</td><td><select class="status-select" data-field="status" aria-label="Status da ação 7"><option selected>OK</option><option>Em andamento</option><option>Pendente</option><option>Validar</option></select></td><td class="editable" contenteditable="true" data-field="comment"></td></tr>
+          <tr data-number="8"><td>8</td><td class="editable" contenteditable="true" data-field="action">Intertravamento da água do Heuft</td><td class="editable" contenteditable="true" data-field="contamination">Água</td><td><select class="status-select" data-field="status" aria-label="Status da ação 8"><option>OK</option><option selected>Em andamento</option><option>Pendente</option><option>Validar</option></select></td><td class="editable" contenteditable="true" data-field="comment">Falta comprar válvula.</td></tr>
+          <tr data-number="9"><td>9</td><td class="editable" contenteditable="true" data-field="action">Troca das mangueiras do Autoflushing</td><td class="editable" contenteditable="true" data-field="contamination">Água</td><td><select class="status-select" data-field="status" aria-label="Status da ação 9"><option selected>OK</option><option>Em andamento</option><option>Pendente</option><option>Validar</option></select></td><td class="editable" contenteditable="true" data-field="comment"></td></tr>
+          <tr data-number="10"><td>10</td><td class="editable" contenteditable="true" data-field="action">Troca do bloco de lubrificação da coluna de entrada</td><td class="editable" contenteditable="true" data-field="contamination">Graxa</td><td><select class="status-select" data-field="status" aria-label="Status da ação 10"><option selected>OK</option><option>Em andamento</option><option>Pendente</option><option>Validar</option></select></td><td class="editable" contenteditable="true" data-field="comment"></td></tr>
+          <tr data-number="11"><td>11</td><td class="editable" contenteditable="true" data-field="action">Proteção do disco do arrolhador</td><td class="editable" contenteditable="true" data-field="contamination">Graxa</td><td><select class="status-select" data-field="status" aria-label="Status da ação 11"><option selected>OK</option><option>Em andamento</option><option>Pendente</option><option>Validar</option></select></td><td class="editable" contenteditable="true" data-field="comment"></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="save-actions">
+      <button class="btn" type="button" onclick="saveContaminationMap()">Salvar alterações</button>
+      <span class="save-feedback" id="contamination-save-feedback" role="status" aria-live="polite" hidden>Alterações salvas neste navegador.</span>
+    </div>
+  </section>
+</main>
+<div class="modal" id="modal"><div class="modal-box"><button class="close" onclick="closeModal()" aria-label="Fechar imagem ampliada">×</button><div class="modal-content"></div></div></div>
+<footer>ATO ECH 02 – AUDITORIA • dados e ações sujeitos à validação técnica da equipe</footer>
+<script src="assets/data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>
