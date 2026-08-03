@@ -1,0 +1,5 @@
+ATO ECH 02 – AUDITORIA
+Abra index.html no navegador.
+Projeto 100% local, sem servidor e sem dependências externas.
+Backlog, ações e aprendizados podem ser editados e salvos no localStorage do navegador.
+Observação: causas-raiz dos 5 Porquês são propostas preliminares e devem ser validadas pela equipe.
