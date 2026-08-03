@@ -56,3 +56,11 @@ footer{text-align:center;color:var(--muted);padding:28px}
 .lg{display:inline-block;width:14px;height:14px;border-radius:4px}
 
 .secondary-impact{padding:10px 12px;border-radius:10px;background:#f4f6f8;color:#475467;border-left:4px solid #98a2b3;font-size:13px}
+
+.wide-table{min-width:1050px}.backlog-general-table{min-width:1280px}.maintenance-table{min-width:1550px}
+.status-pill{display:inline-flex;min-width:48px;justify-content:center;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:900;letter-spacing:.4px}.status-ok{background:#e6f8f1;color:#08734e}.status-nok{background:#fdeaea;color:#b42318}
+.maintenance-table tbody tr[data-status="NOK"] td{background:#fffafa}.maintenance-table tbody tr[data-status="NOK"]:hover td{background:#fff1f0}
+.table-toolbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:18px}.table-toolbar select{width:auto;min-width:210px}.filter-count{font-size:13px;color:var(--muted);font-weight:700}
+.procedure-grid{display:grid;gap:12px}.procedure-card{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px;border:1px solid var(--line);border-radius:13px;background:#f8fafc}.procedure-card h4{margin:6px 0 0}.procedure-card p{margin:6px 0 0;color:var(--muted);font-size:13px}.procedure-card .btn{text-decoration:none;white-space:nowrap}
+.procedure-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.procedure-form .full{grid-column:1/-1}.field label{display:block;margin-bottom:6px;font-size:12px;font-weight:800;color:#344054}.saved-procedures{display:grid;gap:10px;margin-top:14px}
+@media(max-width:560px){.table-toolbar{align-items:stretch}.table-toolbar select{width:100%}.procedure-card{align-items:flex-start;flex-direction:column}.procedure-form{grid-template-columns:1fr}.procedure-form .full{grid-column:auto}}

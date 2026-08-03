@@ -15,4 +15,37 @@ function anomalyCard(a){
 function renderAnomalies(target,filter){const el=document.querySelector(target);if(!el)return;el.innerHTML=ANOMALIES.filter(a=>!filter||a.iv===filter).map(anomalyCard).join('')}
 function saveEditable(key){const vals=[...document.querySelectorAll('[data-save]')].map(e=>e.innerHTML);localStorage.setItem(key,JSON.stringify(vals));alert('Alterações salvas neste navegador.')}
 function loadEditable(key){try{const vals=JSON.parse(localStorage.getItem(key)||'[]');document.querySelectorAll('[data-save]').forEach((e,i)=>{if(vals[i])e.innerHTML=vals[i]})}catch(e){}}
-document.addEventListener('DOMContentLoaded',()=>{setActive();document.querySelectorAll('.gallery img').forEach(i=>i.onclick=()=>imageModal(i.src));document.getElementById('modal')?.addEventListener('click',e=>{if(e.target.id==='modal')closeModal()})})
+function filterStatusTable(tableId,status,counterId){
+ const rows=[...document.querySelectorAll(`#${tableId} tbody tr`)];
+ let visible=0;
+ rows.forEach(row=>{const show=status==='all'||row.dataset.status===status;row.hidden=!show;if(show)visible++});
+ const counter=document.getElementById(counterId);if(counter)counter.textContent=`${visible} ${visible===1?'item exibido':'itens exibidos'}`
+}
+const USER_PROCEDURES_KEY='ato-procedures-v1';
+function createProcedureCard({name,description,link}){
+ const article=document.createElement('article');article.className='procedure-card';
+ const info=document.createElement('div');
+ const badge=document.createElement('span');badge.className='badge green';badge.textContent='Procedimento';
+ const title=document.createElement('h4');title.textContent=name;
+ info.append(badge,title);
+ if(description){const text=document.createElement('p');text.textContent=description;info.append(text)}
+ const anchor=document.createElement('a');anchor.className='btn';anchor.href=link;anchor.target='_blank';anchor.rel='noopener noreferrer';anchor.textContent='Abrir procedimento';
+ article.append(info,anchor);return article
+}
+function loadSavedProcedures(){
+ const target=document.getElementById('saved-procedures');if(!target)return;
+ try{const items=JSON.parse(localStorage.getItem(USER_PROCEDURES_KEY)||'[]');items.forEach(item=>target.append(createProcedureCard(item)))}catch(e){}
+}
+function addProcedure(){
+ const form=document.getElementById('procedure-form');if(!form)return;
+ const name=form.elements['procedure-name'].value.trim();
+ const description=form.elements['procedure-description'].value.trim();
+ const link=form.elements['procedure-link'].value.trim();
+ if(!name||!link){alert('Informe o nome e o link do procedimento.');return}
+ try{const url=new URL(link);if(!['http:','https:'].includes(url.protocol))throw new Error()}catch(e){alert('Informe um link válido iniciado por http:// ou https://.');return}
+ const item={name,description,link};let items=[];
+ try{items=JSON.parse(localStorage.getItem(USER_PROCEDURES_KEY)||'[]')}catch(e){}
+ items.push(item);localStorage.setItem(USER_PROCEDURES_KEY,JSON.stringify(items));
+ document.getElementById('saved-procedures')?.append(createProcedureCard(item));form.reset()
+}
+document.addEventListener('DOMContentLoaded',()=>{setActive();document.querySelectorAll('.gallery img').forEach(i=>i.onclick=()=>imageModal(i.src));document.getElementById('modal')?.addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});loadSavedProcedures()})

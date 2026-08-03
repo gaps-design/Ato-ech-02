@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Revisão dos Planos de Manutenção | ATO ECH 02 – AUDITORIA</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header>
+  <div class="top"><div class="brand">ATO ECH 02 – AUDITORIA<small>Linha 504 • Q1 • Relatório técnico interativo</small></div><span class="badge amber">Out/2025–Dez/2025</span></div>
+  <nav><a href="index.html">Visão geral</a><a href="time.html">Time da enchedora</a><a href="motivo.html">Motivo da escolha</a><a href="analise.html">Análise estruturada</a><a href="mapa.html">Mapa interativo</a><a href="cronograma.html">Cronograma</a><a href="objetivo.html">Objetivo</a><a href="eficiencia.html">Eficiência semanal</a><a href="backlog-geral.html">Backlog Geral</a><a href="backlog.html">Backlog Direcionado</a><a href="cinco-porques.html">5 Porquês</a><a href="dia-d.html">Dia D e evidências</a><a href="acoes.html">Plano de ações</a><a href="revisao-planos.html">Revisão dos Planos de Manutenção</a><a href="aprendizados.html">Aprendizados</a></nav>
+</header>
+<main>
+  <div class="section-title">
+    <div class="eyebrow">Manutenção preventiva</div>
+    <h1>Revisão dos Planos de Manutenção</h1>
+    <p>Esta página apresenta a revisão dos planos de manutenção da Enchedora 02, identificando planos inadequados, itens não aplicáveis, ausência de procedimentos, materiais incorretos e oportunidades de melhoria.</p>
+  </div>
+
+  <div class="card table-toolbar">
+    <label for="maintenance-status-filter"><b>Filtrar por status</b></label>
+    <select id="maintenance-status-filter" onchange="filterStatusTable('maintenance-plans',this.value,'maintenance-count')">
+      <option value="all">Todos os status</option>
+      <option value="OK">OK</option>
+      <option value="NOK">NOK</option>
+    </select>
+    <span id="maintenance-count" class="filter-count" aria-live="polite">22 itens exibidos</span>
+  </div>
+
+  <div class="card table-wrap">
+    <table id="maintenance-plans" class="table wide-table maintenance-table" aria-label="Revisão dos planos de manutenção da Enchedora 02">
+      <thead><tr><th>Plano de manutenção</th><th>Local de instalação</th><th>Texto do item de manutenção</th><th>Tipo de atividade PM</th><th>Centro de trabalho responsável</th><th>Última ordem</th><th>Tipo de ordem</th><th>Status</th><th>Observação</th></tr></thead>
+      <tbody>
+        <tr data-status="NOK"><td>JCBJQ002-004</td><td>JC-05040-ENCHEDORA 02 -ECH504002</td><td>Insp estanqueidade cúpula</td><td>301</td><td>OPE1-GER</td><td>100004188340</td><td>ZM03</td><td><span class="status-pill status-nok">NOK</span></td><td>Falta procedimento</td></tr>
+        <tr data-status="NOK"><td>JCECH504-009</td><td>JC-05040-ENCHEDORA 02 -ECH504002</td><td>Trocar óleo caixa L</td><td>302</td><td>OPE1-GER</td><td>100003648132</td><td>ZM03</td><td><span class="status-pill status-nok">NOK</span></td><td>Não aplicável</td></tr>
+        <tr data-status="NOK"><td>JCECH504-013</td><td>JC-05040-ENCHEDORA 02 -ECH504002</td><td>Limpar cooler motor carrossel</td><td>306</td><td>ELE1-GER</td><td>100003804961</td><td>ZM03</td><td><span class="status-pill status-nok">NOK</span></td><td>Não aplicável</td></tr>
+        <tr data-status="NOK"><td>JCECH504-023</td><td>JC-05040-ENCHEDORA 02 -ECH504002</td><td>Insp. Acoplamentos elásticos</td><td>306</td><td>OPE1-GER</td><td>100003804956</td><td>ZM03</td><td><span class="status-pill status-nok">NOK</span></td><td>Não aplicável</td></tr>
+        <tr data-status="NOK"><td>JCECH504-069</td><td>JC-05040-ENCHEDORA 02 -ECH504002</td><td>Revisão redutor trp ent (Caixa L)</td><td>300</td><td>MEC1-GER</td><td>100003941368</td><td>ZM03</td><td><span class="status-pill status-nok">NOK</span></td><td>Não aplicável</td></tr>
+        <tr data-status="NOK"><td>JCECH504-081</td><td>JC-05040-ENCHEDORA 02 -ECH504002</td><td>Insp redutor trp entrada</td><td>306</td><td>MEC1-GER</td><td>100003941367</td><td>ZM03</td><td><span class="status-pill status-nok">NOK</span></td><td>Não aplicável</td></tr>
+        <tr data-status="NOK"><td>JCENC504-062</td><td>JC-05040-ENCHEDORA 02 -F504054</td><td>EQ-Trocar filtros de part. CO2</td><td>300</td><td>OPE1-GER</td><td>100004212228</td><td>ZM03</td><td><span class="status-pill status-nok">NOK</span></td><td>Material e frequencia errada</td></tr>
+        <tr data-status="NOK"><td>JCENC504-063</td><td>JC-05040-ENCHEDORA 02 -F504055</td><td>EQ-Trocar filtros de part. CO2</td><td>300</td><td>OPE1-GER</td><td>100004212229</td><td>ZM03</td><td><span class="status-pill status-nok">NOK</span></td><td>Material e frequencia errada</td></tr>
+        <tr data-status="NOK"><td>JCENC504-064</td><td>JC-05040-ENCHEDORA 02 -F504052</td><td>EQ-Trocar filtros microb. CO2</td><td>300</td><td>OPE1-GER</td><td>100004212230</td><td>ZM03</td><td><span class="status-pill status-nok">NOK</span></td><td>Material e frequencia errada</td></tr>
+        <tr data-status="NOK"><td>JCENC504-066</td><td>JC-05040-ENCHEDORA 02 -ECH504002</td><td>Insp. de ultrassom na mangueira</td><td>306</td><td>MEC1-GER</td><td>100004212232</td><td>ZM03</td><td><span class="status-pill status-nok">NOK</span></td><td>Não aplicável</td></tr>
+        <tr data-status="NOK"><td>JCENC504-068</td><td>JC-05040-ENCHEDORA 02 -ECH504002</td><td>Insp ultrassom no pistão</td><td>306</td><td>MEC1-GER</td><td>100004212234</td><td>ZM03</td><td><span class="status-pill status-nok">NOK</span></td><td>Não aplicável</td></tr>
+        <tr data-status="NOK"><td>JCENC504-070</td><td>JC-05040-ENCHEDORA 02 -SI504001</td><td>BL-1-33 Limpar pistas anel coletor</td><td>305</td><td>ELE1-GER</td><td>100003804970</td><td>ZM03</td><td><span class="status-pill status-nok">NOK</span></td><td>Falta componente (projeto)</td></tr>
+        <tr data-status="NOK"><td>JCENC504-075</td><td>JC-05040-ENCHEDORA 02 -MR504178</td><td>BL-1-45 Insp freio motor carrossel</td><td>306</td><td>ELE1-GER</td><td>100003804968</td><td>ZM03</td><td><span class="status-pill status-nok">NOK</span></td><td>Não aplicável</td></tr>
+        <tr data-status="NOK"><td>JCENC504-078</td><td>JC-05040-ENCHEDORA 02 -ECH504002</td><td>EV-1-96 Trocar vedações gfs falsas</td><td>300</td><td>OPE1-GER</td><td>100003804921</td><td>ZM03</td><td><span class="status-pill status-nok">NOK</span></td><td>Falta procedimento</td></tr>
+        <tr data-status="NOK"><td>JCOHI006-095</td><td>JC-05040-ENCHEDORA 02 -PLC504004</td><td>Preventiva de Placas eletrônicas</td><td>306</td><td>ELE1-GER</td><td>100002739906</td><td>ZM03</td><td><span class="status-pill status-nok">NOK</span></td><td>Não aplicável</td></tr>
+        <tr data-status="NOK"><td>JCONR032-059</td><td>JC-05040-ENCHEDORA 02 -TQ504031</td><td>NR13 - Medição de espessura</td><td>700</td><td>EXT1-VAS</td><td>100003744717</td><td>ZM07</td><td><span class="status-pill status-nok">NOK</span></td><td>Falta procedimento</td></tr>
+        <tr data-status="NOK"><td>JCONR032-061</td><td>JC-05040-ENCHEDORA 02 -TQ504031</td><td>NR13 - Exame externo</td><td>700</td><td>EXT1-VAS</td><td>100003744719</td><td>ZM07</td><td><span class="status-pill status-nok">NOK</span></td><td>Falta procedimento</td></tr>
+        <tr data-status="NOK"><td>JCONR032-063</td><td>JC-05040-ENCHEDORA 02 -TQ504031</td><td>NR13 - Exame interno</td><td>700</td><td>EXT1-VAS</td><td>100003744881</td><td>ZM07</td><td><span class="status-pill status-nok">NOK</span></td><td>Falta procedimento</td></tr>
+        <tr data-status="NOK"><td>JCZYF042-046</td><td>JC-05040-ENCHEDORA 02 -R504178</td><td>QA-0-92 Trocar óleo red. carrossel 4000H</td><td>302</td><td>OPE1-GER</td><td>100003648454</td><td>ZM03</td><td><span class="status-pill status-nok">NOK</span></td><td>Não aplicável</td></tr>
+        <tr data-status="NOK"><td>JCZYF042-047</td><td>JC-05040-ENCHEDORA 02 -ECH504002</td><td>Trocar óleo caixa T</td><td>302</td><td>OPE1-GER</td><td>100003648455</td><td>ZM03</td><td><span class="status-pill status-nok">NOK</span></td><td>Não aplicável</td></tr>
+        <tr data-status="NOK"><td>JCZYF042-049</td><td>JC-05040-ENCHEDORA 02 -ECH504002</td><td>Trocar óleo redutor trp entrada</td><td>302</td><td>OPE1-GER</td><td>100003648457</td><td>ZM03</td><td><span class="status-pill status-nok">NOK</span></td><td>Não aplicável</td></tr>
+        <tr data-status="NOK"><td>JCZYF042-099</td><td>JC-05040-ENCHEDORA 02 -R504181</td><td>Trocar óleo redut mesa</td><td>302</td><td>OPE1-GER</td><td>100003648629</td><td>ZM03</td><td><span class="status-pill status-nok">NOK</span></td><td>Não aplicável</td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+<div class="modal" id="modal"><div class="modal-box"><button class="close" onclick="closeModal()">×</button><div class="modal-content"></div></div></div>
+<footer>ATO ECH 02 – AUDITORIA • revisão dos planos de manutenção</footer>
+<script src="assets/data.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

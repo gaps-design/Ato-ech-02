@@ -1,5 +1,5 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Aprendizados | ATO ECH 02 – AUDITORIA</title><link rel="stylesheet" href="assets/style.css"></head>
-<body><header><div class="top"><div class="brand">ATO ECH 02 – AUDITORIA<small>Linha 504 • Q1 • Relatório técnico interativo</small></div><span class="badge amber">Out/2025–Dez/2025</span></div><nav><a href="index.html">Visão geral</a><a href="time.html">Time da enchedora</a><a href="motivo.html">Motivo da escolha</a><a href="analise.html">Análise estruturada</a><a href="mapa.html">Mapa interativo</a><a href="cronograma.html">Cronograma</a><a href="objetivo.html">Objetivo</a><a href="eficiencia.html">Eficiência semanal</a><a href="backlog.html">Backlog Dia D</a><a href="cinco-porques.html">5 Porquês</a><a href="dia-d.html">Dia D e evidências</a><a href="acoes.html">Plano de ações</a><a href="aprendizados.html">Aprendizados</a></nav></header><main>
+<body><header><div class="top"><div class="brand">ATO ECH 02 – AUDITORIA<small>Linha 504 • Q1 • Relatório técnico interativo</small></div><span class="badge amber">Out/2025–Dez/2025</span></div><nav><a href="index.html">Visão geral</a><a href="time.html">Time da enchedora</a><a href="motivo.html">Motivo da escolha</a><a href="analise.html">Análise estruturada</a><a href="mapa.html">Mapa interativo</a><a href="cronograma.html">Cronograma</a><a href="objetivo.html">Objetivo</a><a href="eficiencia.html">Eficiência semanal</a><a href="backlog-geral.html">Backlog Geral</a><a href="backlog.html">Backlog Direcionado</a><a href="cinco-porques.html">5 Porquês</a><a href="dia-d.html">Dia D e evidências</a><a href="acoes.html">Plano de ações</a><a href="revisao-planos.html">Revisão dos Planos de Manutenção</a><a href="aprendizados.html">Aprendizados</a></nav></header><main>
 <div class="section-title"><div class="eyebrow">Etapa 10</div><h1>Aprendizados</h1><p>Registro editável para consolidar o conhecimento gerado.</p></div>
 <div class="grid g2">
 <div class="card"><h3>1. Os dados precisam conduzir o Dia D</h3><div contenteditable="true" data-save class="editable">A abertura por subconjunto, componente e modo de falha evitou uma inspeção genérica e direcionou a equipe ao Anel de Comandos e aos Pistões Elevadores.</div></div>
@@ -39,14 +39,28 @@
 <li>Criada atividade Smartcheck para inspeção de vazamentos dos pistões elevadores.</li>
 </ul>
 
-<h3>Procedimento Acádia</h3>
-<div style="border:2px dashed #999;padding:16px;border-radius:10px">
-<p><b>Imagem do cabeçalho do procedimento</b></p>
-<div style="height:180px;border:1px dashed #bbb;display:flex;align-items:center;justify-content:center">Inserir imagem do procedimento</div>
-<p><b>Link do procedimento Acádia:</b></p>
-<div style="height:40px;border:1px solid #bbb;border-radius:6px"></div>
-<p>Status: ☐ Em elaboração &nbsp; ☐ Em revisão &nbsp; ☐ Publicado</p>
+<h3>Procedimentos criados ou revisados</h3>
+<p>Os títulos permanecem provisórios porque o conteúdo atual do projeto não identifica com segurança a relação entre cada código e um procedimento específico.</p>
+<div class="procedure-grid">
+  <article class="procedure-card"><div><span class="badge green">Acádia</span><h4>Procedimento CJC-504566</h4></div><a class="btn" href="https://ab-inbev.acadia.sysalli.com/browse/CJC-504566/pt" target="_blank" rel="noopener noreferrer">Abrir procedimento</a></article>
+  <article class="procedure-card"><div><span class="badge green">Acádia</span><h4>Procedimento CJC-504608</h4></div><a class="btn" href="https://ab-inbev.acadia.sysalli.com/browse/CJC-504608/pt" target="_blank" rel="noopener noreferrer">Abrir procedimento</a></article>
+  <article class="procedure-card"><div><span class="badge green">Acádia</span><h4>Procedimento CJC-502905</h4></div><a class="btn" href="https://ab-inbev.acadia.sysalli.com/browse/CJC-502905/pt" target="_blank" rel="noopener noreferrer">Abrir procedimento</a></article>
+  <article class="procedure-card"><div><span class="badge green">Acádia</span><h4>Procedimento CJC-506026</h4></div><a class="btn" href="https://ab-inbev.acadia.sysalli.com/browse/CJC-506026/pt" target="_blank" rel="noopener noreferrer">Abrir procedimento</a></article>
+  <article class="procedure-card"><div><span class="badge green">Acádia</span><h4>Procedimento CJC-501743</h4></div><a class="btn" href="https://ab-inbev.acadia.sysalli.com/browse/CJC-501743/pt" target="_blank" rel="noopener noreferrer">Abrir procedimento</a></article>
 </div>
+
+<details>
+  <summary>Adicionar novo procedimento futuramente</summary>
+  <div class="inside">
+    <form id="procedure-form" class="procedure-form" onsubmit="event.preventDefault();addProcedure()">
+      <div class="field"><label for="procedure-name">Nome do plano ou procedimento</label><input id="procedure-name" name="procedure-name" required></div>
+      <div class="field"><label for="procedure-link">Link</label><input id="procedure-link" name="procedure-link" type="url" placeholder="https://" required></div>
+      <div class="field full"><label for="procedure-description">Descrição</label><textarea id="procedure-description" name="procedure-description" rows="3"></textarea></div>
+      <div class="full"><button class="btn" type="submit">Adicionar procedimento</button></div>
+    </form>
+    <div id="saved-procedures" class="saved-procedures"></div>
+  </div>
+</details>
 </section>
 
 </main>
