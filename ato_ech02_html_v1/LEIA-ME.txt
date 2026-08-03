@@ -1,4 +1,4 @@
-ATO ECH 02 – AUDITORIA
+ATO ENCHEDORA 02
 Abra index.html no navegador.
 Projeto 100% local, sem servidor e sem dependências externas.
 Backlog, ações e aprendizados podem ser editados e salvos no localStorage do navegador.
