@@ -37,13 +37,16 @@ footer{text-align:center;color:var(--muted);padding:28px}
 @media(max-width:900px){.hero-images{grid-template-columns:1fr}}
 
 .timeline-scroll{overflow-x:auto;padding-bottom:8px}
-.gantt-monthly{display:grid;grid-template-columns:320px repeat(11,minmax(94px,1fr));min-width:1354px;border:1px solid #8190a1;border-radius:8px;overflow:hidden;background:#fff}
-.gantt-monthly>*{border-right:1px solid #9aa6b3;border-bottom:1px solid #9aa6b3}
-.ghead{background:#c6dcf2!important;font-weight:900;z-index:4!important}
-.month-header{display:grid;place-items:center;min-height:52px;padding:8px;background:#dff3e7;color:#17633e;font-size:12px;font-weight:900;text-align:center}
-.glabel{position:sticky;left:0;z-index:2;padding:10px 12px;background:#d7e7f7;cursor:pointer;display:flex;flex-direction:column;justify-content:center;text-align:left;color:var(--text)}
-.glabel span{font-size:11px;color:var(--muted);margin-top:4px}.activity-label{width:100%;border-top:0;border-left:0}
-.schedule-cell{border-top:0;border-left:0;min-height:54px;background:#fff;cursor:pointer}
+.gantt-weekly{display:grid;grid-template-columns:350px repeat(18,minmax(50px,1fr));grid-template-rows:36px 36px repeat(10,36px);min-width:1250px;border-top:1px solid #111;border-left:1px solid #111;background:#fff}
+.gantt-weekly>*{border:0;border-right:1px solid #111;border-bottom:1px solid #111;border-radius:0}
+.ghead{background:#8db3df!important;font-weight:900;z-index:4!important}
+.weekly-activity-head{grid-column:1;grid-row:1/span 2;align-items:center;text-align:center}
+.month-header,.week-header{display:grid;place-items:center;padding:4px;color:#111;font-size:14px;font-weight:900;text-align:center}
+.month-header.month-feb{background:#fff200}.month-header.month-mar{background:#f7bd8d}.month-header.month-apr{background:#12a9d7}.month-header.month-may{background:#00aa4f;color:#fff}
+.week-header.month-feb{background:#fafce9}.week-header.month-mar{background:#fff0e5}.week-header.month-apr{background:#a9d4df}.week-header.month-may{background:#e5efd0}
+.glabel{position:sticky;left:0;z-index:2;padding:3px 6px;background:#bdd3ec;cursor:pointer;display:flex;justify-content:center;text-align:left;color:#111;font-size:14px}
+.activity-label{width:100%;border-left:0;align-items:flex-start}
+.schedule-cell{min-height:36px;background:#fff;cursor:pointer;padding:0}
 .schedule-cell:hover{filter:brightness(.96)}
 .schedule-cell.scheduled-period,.lg.schedule-regular{background:#31c48d}
 .schedule-cell.final-planned,.lg.schedule-final{background:#ffc338}

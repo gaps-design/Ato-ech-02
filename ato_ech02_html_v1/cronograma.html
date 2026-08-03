@@ -26,13 +26,13 @@
   </div>
 
   <section class="card" aria-labelledby="schedule-title">
-    <h2 id="schedule-title">Distribuição mensal das atividades</h2>
+    <h2 id="schedule-title">Distribuição semanal das atividades</h2>
     <div class="legend" aria-label="Regra de cores do cronograma">
-      <span><i class="lg schedule-regular"></i>Períodos programados</span>
-      <span><i class="lg schedule-final"></i>Duas últimas etapas planejadas</span>
+      <span><i class="lg schedule-regular"></i>Atividades programadas</span>
+      <span><i class="lg schedule-final"></i>S16, S17 e S18</span>
     </div>
     <div class="timeline-scroll">
-      <div class="gantt-monthly" id="gantt-monthly" role="table" aria-label="Cronograma mensal de fevereiro a dezembro"></div>
+      <div class="gantt-weekly" id="gantt-weekly" role="table" aria-label="Cronograma semanal de fevereiro a maio, da semana S1 à S18"></div>
     </div>
     <p class="caption">Clique em qualquer atividade ou período preenchido para abrir os detalhes da etapa.</p>
   </section>
@@ -50,49 +50,59 @@
 <footer>ATO ENCHEDORA 02 • cronograma interativo</footer>
 <script src="assets/data.js"></script><script src="assets/app.js"></script>
 <script>
-const MONTHS=['Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-const STAGES=[
-  {id:1,name:'Reunião de kickoff',start:0,end:0,status:'Concluída',desc:'Definição do escopo, objetivos, equipe e direcionamento inicial.'},
-  {id:2,name:'Planejamento',start:1,end:1,status:'Concluída',desc:'Organização dos recursos, análise de riscos e preparação do Dia D.'},
-  {id:3,name:'Treinamento',start:2,end:2,status:'Concluída',desc:'Alinhamento técnico da equipe e preparação para as inspeções.'},
-  {id:4,name:'Dia D',start:2,end:3,status:'Concluída',desc:'Execução das inspeções e abertura do backlog de anomalias.'},
-  {id:5,name:'Reunião de Alinhamento',start:3,end:3,status:'Concluída',desc:'Consolidação das evidências e priorização das ações.'},
-  {id:6,name:'Execução das atividades',start:3,end:8,status:'Em andamento',desc:'Tratamento das anomalias identificadas no Dia D.'},
-  {id:7,name:'5 PQs Causa Raiz e Tratamento de Backlog',start:4,end:8,status:'Em andamento',desc:'Análises de causa raiz e definição dos tratamentos.'},
-  {id:8,name:'Revisão e criação de planos e check list CIL',start:5,end:8,status:'Em andamento',desc:'Validação no SAP e Acádia, criação/revisão de planos e padrões.'},
-  {id:9,name:'Resultados do Equipamento',start:6,end:10,status:'Em andamento',desc:'Acompanhamento do rendimento e dos indicadores.'},
-  {id:10,name:'Revisão de planos',start:7,end:10,status:'Planejada',desc:'Fechamento das revisões, padronização e sustentação.'}
+const MONTHS=[
+  {name:'Fev',start:1,count:4,className:'month-feb'},
+  {name:'Mar',start:5,count:4,className:'month-mar'},
+  {name:'Abril',start:9,count:5,className:'month-apr'},
+  {name:'Mai',start:14,count:5,className:'month-may'}
 ];
-function renderMonthlySchedule(){
-  const grid=document.getElementById('gantt-monthly');if(!grid)return;
-  const header=`<div class="ghead glabel" role="columnheader">Atividades</div>${MONTHS.map(month=>`<div class="month-header" role="columnheader">${month}</div>`).join('')}`;
+const STAGES=[
+  {id:1,name:'Reunião de kickoff',weeks:[2,3],status:'Concluída',desc:'Definição do escopo, objetivos, equipe e direcionamento inicial.'},
+  {id:2,name:'Planejamento',weeks:[3,13],status:'Concluída',desc:'Organização dos recursos, análise de riscos e preparação do Dia D.'},
+  {id:3,name:'Treinamento',weeks:[3],status:'Concluída',desc:'Alinhamento técnico da equipe e preparação para as inspeções.'},
+  {id:4,name:'Dia D',weeks:[3,4,13],status:'Concluída',desc:'Execução das inspeções e abertura do backlog de anomalias.'},
+  {id:5,name:'Reunião de Alinhamento',weeks:[3,4,5,6,7,8],status:'Concluída',desc:'Consolidação das evidências e priorização das ações.'},
+  {id:6,name:'Execução das atividades',weeks:[5,6,7,8,9,10,11,12,13,14,15,16,17,18],status:'Em andamento',desc:'Tratamento das anomalias identificadas no Dia D.'},
+  {id:7,name:'5 PQs Causa Raiz e Tratamento de Backlog',weeks:[10,11,12,13,14,15],status:'Em andamento',desc:'Análises de causa raiz e definição dos tratamentos.'},
+  {id:8,name:'Revisão e criação de planos e check list CIL',weeks:[10,11,12,13,14,15,16,17,18],status:'Em andamento',desc:'Validação no SAP e Acádia, criação/revisão de planos e padrões.'},
+  {id:9,name:'Resultados do Equipamento',weeks:[13,14,15,16,17,18],status:'Em andamento',desc:'Acompanhamento do rendimento e dos indicadores.'},
+  {id:10,name:'Revisão de planos',weeks:[14,15,16,17,18],status:'Planejada',desc:'Fechamento das revisões, padronização e sustentação.'}
+];
+function monthForWeek(week){return MONTHS.find(month=>week>=month.start&&week<month.start+month.count)}
+function renderWeeklySchedule(){
+  const grid=document.getElementById('gantt-weekly');if(!grid)return;
+  const activityHeader='<div class="ghead glabel weekly-activity-head" role="columnheader">Atividades</div>';
+  const monthHeaders=MONTHS.map(month=>`<div class="month-header ${month.className}" role="columnheader" style="grid-column:${month.start+1}/span ${month.count};grid-row:1">${month.name}</div>`).join('');
+  const weekHeaders=Array.from({length:18},(_,index)=>{const week=index+1;const month=monthForWeek(week);return `<div class="week-header ${month.className}" role="columnheader" style="grid-column:${week+1};grid-row:2">S${week}</div>`}).join('');
   const rows=STAGES.map(stage=>{
-    const label=`<button class="glabel activity-label" type="button" onclick="openStage(${stage.id})" role="rowheader"><b>${stage.name}</b><span>${stage.status}</span></button>`;
-    const periods=MONTHS.map((month,index)=>{
-      const active=index>=stage.start&&index<=stage.end;
-      const finalPlanned=stage.id===10&&index>=9;
-      const stateClass=active?(finalPlanned?'final-planned':'scheduled-period'):'';
-      return `<button class="schedule-cell ${stateClass}" type="button" aria-label="${stage.name} — ${month}" onclick="openStage(${stage.id})"></button>`
+    const row=stage.id+2;
+    const label=`<button class="glabel activity-label" style="grid-column:1;grid-row:${row}" type="button" onclick="openStage(${stage.id})" role="rowheader"><b>${stage.name}</b></button>`;
+    const periods=Array.from({length:18},(_,index)=>{
+      const week=index+1;
+      const active=stage.weeks.includes(week);
+      const stateClass=active?(week>=16?'final-planned':'scheduled-period'):'';
+      return `<button class="schedule-cell ${stateClass}" style="grid-column:${week+1};grid-row:${row}" type="button" aria-label="${stage.name} — S${week}" onclick="openStage(${stage.id})"></button>`
     }).join('');
     return label+periods
   }).join('');
-  grid.innerHTML=header+rows
+  grid.innerHTML=activityHeader+monthHeaders+weekHeaders+rows
 }
 function openStage(id){
   const stage=STAGES.find(item=>item.id===id);if(!stage)return;
+  const firstWeek=Math.min(...stage.weeks),lastWeek=Math.max(...stage.weeks);
   openModal(`
     <div class="eyebrow">Cronograma</div>
     <h2>${stage.name}</h2>
     <div class="kpis">
-      <div class="kpi"><b style="font-size:20px">${MONTHS[stage.start]}</b><span>Início</span></div>
-      <div class="kpi"><b style="font-size:20px">${MONTHS[stage.end]}</b><span>Fim</span></div>
+      <div class="kpi"><b style="font-size:20px">S${firstWeek} • ${monthForWeek(firstWeek).name}</b><span>Início</span></div>
+      <div class="kpi"><b style="font-size:20px">S${lastWeek} • ${monthForWeek(lastWeek).name}</b><span>Fim</span></div>
       <div class="kpi"><b style="font-size:20px">${stage.status}</b><span>Status</span></div>
     </div>
     <div class="card"><h3>Objetivo da etapa</h3><p>${stage.desc}</p></div>
     <div class="card"><h3>Evidências vinculadas</h3><p>Espaço reservado para atas, fotos, notas SAP, planos, procedimentos e resultados da etapa.</p></div>
   `)
 }
-document.addEventListener('DOMContentLoaded',renderMonthlySchedule);
+document.addEventListener('DOMContentLoaded',renderWeeklySchedule);
 </script>
 </body>
 </html>
